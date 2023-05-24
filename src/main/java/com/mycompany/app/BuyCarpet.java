@@ -1,5 +1,8 @@
+package com.mycompany.app;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +12,9 @@ public class BuyCarpet {
    private Map<Long,String> carpets = new HashMap<>();
     private ArrayList<Long> prices = new ArrayList<>();
 
-    private void addCarpet() throws FileNotFoundException {
-        File text = new File("list of carpets.txt");
+    private void addCarpet() throws FileNotFoundException, URISyntaxException {
+    System.out.println(getClass().getClassLoader().getResource("list of carpets.txt").toURI());
+        File text = Paths.get(getClass().getClassLoader().getResource("list of carpets.txt").toURI()).toFile();
         Scanner scr = new Scanner(text);
         int i =0;
         while (scr.hasNextLine()){
@@ -23,7 +27,12 @@ public class BuyCarpet {
     }
 
     public ArrayList<String> showLargestNumOfCarpet(long money) throws FileNotFoundException {
-        addCarpet();
+        try {
+			addCarpet();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         Map<Long,String> instanceCarpets = carpets;
         long totalPrice=0;
         ArrayList<String> chosenCarpets = new ArrayList<>();

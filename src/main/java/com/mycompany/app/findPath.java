@@ -1,3 +1,5 @@
+package com.mycompany.app;
+
 import java.io.*;
 import java.lang.*;
 import java.util.*;
@@ -14,7 +16,7 @@ public class findPath {
 
     // Initializing the distance and
 // Next array
-    static void initialise(int V,
+     void initialise(int V,
                            int[][] graph) {
         for (int i = 0; i < V; i++) {
             for (int j = 0; j < V; j++) {
@@ -32,7 +34,7 @@ public class findPath {
 
     // Function construct the shortest
 // path between u and v
-    static Vector<Integer> constructPath(int u,
+     Vector<Integer> constructPath(int u,
                                          int v) {
 
         // If there's no path between
@@ -56,7 +58,7 @@ public class findPath {
 // with little modification Now if we find
 // that dis[i][j] > dis[i][k] + dis[k][j]
 // then we modify next[i][j] = next[i][k]
-    static void floydWarshall(int V) {
+     void floydWarshall(int V) {
         for (int k = 0; k < V; k++) {
             for (int i = 0; i < V; i++) {
                 for (int j = 0; j < V; j++) {
@@ -79,7 +81,7 @@ public class findPath {
     }
 
     // Print the shortest path
-    static void printPath(Vector<Integer> path) {
+     void printPath(Vector<Integer> path) {
         int n = path.size();
         for (int i = 0; i < n - 1; i++)
             System.out.print(path.get(i) + " -> ");
