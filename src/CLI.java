@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -55,6 +57,16 @@ public class CLI {
 
         input.nextLine();
 
+    }
+
+    public static void Buy() throws FileNotFoundException {
+        BuyCarpet buyCarpet = new BuyCarpet();
+        System.out.println("How much money do you have?");
+        Scanner input = new Scanner(System.in);
+        long money = input.nextLong();
+        ArrayList<String> chosenCarpets = buyCarpet.showLargestNumOfCarpet(money);
+        System.out.println("These are the carpets that we offer you to buy:");
+        System.out.println(chosenCarpets);
     }
 
 }

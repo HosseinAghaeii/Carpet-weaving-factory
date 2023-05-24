@@ -1,0 +1,11 @@
+machine-carpet1 8700
+machine-carpet2 8900
+machine-carpet3 13300
+machine-carpet4 13700
+machine-carpet5 17400
+machine-carpet6 17800
+handmade-carpet1 20000
+handmade-carpet2 22000
+handmade-carpet3 50000
+handmade-carpet4 33000
+handmade-carpet5 25000
