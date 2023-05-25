@@ -1,10 +1,9 @@
 package com.mycompany.app.Models;
 
-import com.mycompany.app.SequenceAlignment;
 
-public class Carpet  {
+public class Carpet {
   public String name;
-  int price;
+  public int price;
   public int[] map;
 
   public Carpet(String name, int price, int[][] map) {
@@ -30,5 +29,12 @@ public class Carpet  {
 
   }
 
-
+  @Override
+  public String toString() {
+    for (int i = 0; i <= this.map.length -1
+    ; i++) {
+      System.out.print(this.map[i] + " ");
+    }
+    return name + "\n";
+  }
 }
