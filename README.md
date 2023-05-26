@@ -117,7 +117,7 @@ solution[solution.length - 1][solution[0].length - 1]
 
 چون نقشه فرش ها یک ماتریس است با استفاده یک الگورییتم انها را به یک ارایه یک بعدی تبدیل می کنیم
 
-بخش سوم
+## بخش سوم
 ### شرح کلی
 در این بخش کاربر به ما مقدار پولی که می تواند برای خرید فرش بپردازد را می دهد و ما باید بیشترین فرشی که کاربر میتواند خریداری کند را به او اعلام کنیم.
 همانطور که در داک پروزه نوشته شده در حل این بخش از الگوریتم کوله پشتی استفاده شده است. در الگوریتم کوله پشتی دو مقدار wieght و price داریم، ولی اینجا فقط مقدار weight که همان پول وارد
@@ -129,7 +129,7 @@ solution[solution.length - 1][solution[0].length - 1]
 #### تایع min
 در این تابه یک اری لیست از موجودیت carpet داده میشود و به عنوان خروجی شی ای از نوع carpet که کمترین قیمت را دارد برگردانده میشود. ابتدا در متغیر answer قیمت  
 اولین شی که در اری لیست است ذخیره میشود.سپس داخل حلقه فور همه اشیا چک میشوند و اگر قیمت شی ای کمتر بود آن شی در answer ذخیره می شود.
-
+```
 private Long min(ArrayList<Carpet> carpets) {
    Long answer = Long.valueOf(carpets.get(0).price);
     for (int i = 0; i < carpets.size(); i++) {
@@ -138,12 +138,13 @@ private Long min(ArrayList<Carpet> carpets) {
     }
     return answer;
   }
+  ```
 
 
 #### تابع getCarpet
 در این اری لیستی از موجودیت carpet و یک قیمت میگیریم.به عنوان خروجی carpet که ان قیمت را دارد برمیگردانیم.این کار را با یکحلقه فور ساده روی اری لیست انجام میدهیم. اگر همچین شی ای پیدا 
 نشد مقدار null برگردانده میشود.
-
+```
 public Carpet getCarpet(Long price, ArrayList<Carpet> carpetsArr){
     for (int i = 0; i <carpetsArr.size() ; i++) {
      if (carpetsArr.get(i).price == price){
@@ -153,6 +154,7 @@ public Carpet getCarpet(Long price, ArrayList<Carpet> carpetsArr){
     }
     return null;
   }
+  ```
 
 
 #### تابع showLargestNumOfCarpet
@@ -162,7 +164,7 @@ public Carpet getCarpet(Long price, ArrayList<Carpet> carpetsArr){
 این الگوریتم بترتیب از ارزان ترین فرش ها تا گرانترین فرش ها پیش میرود و تا وقتی مجموع قیمت فرش های انتخاب شده به دارایی کاربر نرسد هربار ارزان ترین فرش باقی مانده در لیست فرش ها به غیر از
 فرش های انتخاب شده را به لیست اضافه میکند.
 
-
+```
 public ArrayList<String> showLargestNumOfCarpet(long money,ArrayList<Carpet> carpetsArr)  {
     long totalPrice = 0;
     ArrayList<String> chosenCarpets = new ArrayList<>();
@@ -181,15 +183,18 @@ public ArrayList<String> showLargestNumOfCarpet(long money,ArrayList<Carpet> car
     }
     return chosenCarpets;
   }
+  ```
 
 
 ### نمونه ورودی و خروجی
 
-
+```
 input:30000
+```
 
-
+```
 output:[machine-carpet1, machine-carpet2]
+```
 
 ### تحلیل زمانی پروژه
 پیچیدگی اصلی داخل حلقه وایل در تایع showLargestNumOfCarpet اتفاق میفتد.این حلقه در بدترین حالت به اندازه تعداد فرشها تکرار میشود و هر بار در دستور های 
