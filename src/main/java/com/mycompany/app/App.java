@@ -67,7 +67,7 @@ public class App {
         break;
     } while (input.hasNextLine());
 
-    g1.greedyColoring();
+    g1.coloring();
     input.close();
   }
 

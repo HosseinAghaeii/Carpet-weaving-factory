@@ -2,9 +2,58 @@
 
 ## بخش اول
 در این بخش هدف رنگ آمیزی فرش است بطوریکه حداقل رنگ استفاده شود و هیچ دو ناحیه ای همرنگ نباشد.دراین بخش ما ناحیه های فرش را به راس های یک گراف تشبیه کردیم و همسایگی دو یال را، به 
+```
+    Graph(int v) {
+            V = v;
+            adj = new LinkedList[v];
+            for (int i = 0; i < v; ++i)
+                adj[i] = new LinkedList();
+        }
+```
+
 وجود یک یال بین این ناحیه تعبیر کردیم.اینگونه میتوان این مسیله را با کمک گرفتن از الگوریتم رنگ آمیزی گراف حل کرد.
 در فایل graphColor.txt ابتدا سایز گراف(تعداد راس ها) گرفته میشود و سپس در هر خط هر دو یالی که باهم همسایه اند نوشته میشوند.
 
+
+برای پیدا کردن تعداد رنگ از متد coloring استفاده می کنیم
+ که ابتدا یک ارایه با مقدار اولیه -۱ ایجاد می کنیم سپس در حلقه ای که تمام راس ها را طی می کنند چک می کنیم که ایا رنگی به ان اختصاص داده شده یا نه و سعی می کنیم رنگی که همسایه های ان ندارند را به ان اختصاص دهیم
+```
+void coloring() {
+            int result[] = new int[V];
+            Arrays.fill(result, -1);
+            result[0] = 0;
+            boolean available[] = new boolean[V];
+            Arrays.fill(available, true);
+            for (int u = 1; u < V; u++) {
+                Iterator<Integer> it = adj[u].iterator();
+                while (it.hasNext()) {
+                    int i = it.next();
+                    if (result[i] != -1)
+                        available[result[i]] = false;
+                }
+                int cr;
+                for (cr = 0; cr < V; cr++) {
+                    if (available[cr])
+                        break;
+                }
+
+                result[u] = cr; // Assign the found color
+
+                Arrays.fill(available, true);
+            }
+
+            int min = -1 ;
+          
+            for (int u = 0; u < V; u++){
+                if (min < result[u])
+                    min = result[u];
+                System.out.println("Vertex " + u + " ---> Color "
+                        + result[u]);
+            }
+
+            System.out.println(min);
+        }
+```
 ## بخش دوم
 
 برای پیدا کردن فرش های مشابه به هم از الگوریتم Sequence alignment استفاده شده
