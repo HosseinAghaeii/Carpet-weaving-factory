@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
-import java.util.Vector;
 
 import com.mycompany.app.Models.Carpet;
 
 public class App {
 
   static ArrayList<Carpet> carpets = new ArrayList<>();
+
   /*
    * calling all function(all parts of code)
-   * */
+   */
   public static void main(String[] args) throws FileNotFoundException, URISyntaxException {
     getCarpets();
     System.out.println("geting color grath");
@@ -79,30 +79,32 @@ public class App {
    * street of it like below
    * SIZE
    * [MATRIX]
+   *
+   * inter INF for not having a road to that intersection
    * change the function params for changeing the path that you want to find
+   * 
    * @param startVertex the start point
+   * 
    * @param endVertex the end point
    */
   public static void getPath(int startVertex, int endVertex) {
     Scanner input = new Scanner(App.class.getClassLoader().getResourceAsStream("findPath.txt"));
-    findPath findPath = new findPath();
     Integer size = input.nextInt();
 
     int[][] graph = new int[size][4];
 
     for (int i = 0; i < size; i++) {
+      String[] in = input.nextLine().split(" ");
+      if (in.length < 4) {
+        continue;
+      }
       for (int j = 0; j < 4; j++) {
-        graph[i][j] = input.nextInt();
+        graph[i][j] = in[j].equals("INF") ? FindPath.INF : Integer.parseInt(in[j]);
       }
     }
 
-    findPath.initialise(size, graph);
-
-    findPath.floydWarshall(size);
-    Vector<Integer> path;
-
-    path = findPath.constructPath(startVertex, endVertex);
-    findPath.printPath(path);
+    FindPath findPath = new FindPath(size, graph);
+    findPath.printPath(3, 1);
 
     input.close();
   }

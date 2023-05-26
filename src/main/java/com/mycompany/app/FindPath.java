@@ -2,7 +2,7 @@ package com.mycompany.app;
 
 import java.util.*;
 
-public class findPath {
+public class FindPath {
 
   static final int MAXN = 100;
 
@@ -11,7 +11,7 @@ public class findPath {
   static int[][] dis = new int[MAXN][MAXN];
   static int[][] Next = new int[MAXN][MAXN];
 
-  void initialise(int V,
+  FindPath(int V,
       int[][] graph) {
     for (int i = 0; i < V; i++) {
       for (int j = 0; j < V; j++) {
@@ -23,9 +23,10 @@ public class findPath {
           Next[i][j] = j;
       }
     }
+    floyd(V);
   }
 
-  Vector<Integer> constructPath(int u,
+  private Vector<Integer> constructPath(int u,
       int v) {
 
     // If there's no path between
@@ -45,7 +46,7 @@ public class findPath {
     return path;
   }
 
-  void floydWarshall(int V) {
+  private void floyd(int V) {
     for (int k = 0; k < V; k++) {
       for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
@@ -67,7 +68,9 @@ public class findPath {
     }
   }
 
-  void printPath(Vector<Integer> path) {
+  void printPath(int u,
+      int v) {
+    Vector<Integer> path = constructPath(u, v);
     int n = path.size();
     for (int i = 0; i < n - 1; i++)
       System.out.print(path.get(i) + " -> ");
