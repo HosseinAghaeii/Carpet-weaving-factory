@@ -113,12 +113,12 @@ public class App {
 
   }
 
-  public static void buyCarpet() throws FileNotFoundException {
-    BuyCarpet buyCarpet = new BuyCarpet(carpets);
+  public static void buyCarpet()  {
+    BuyCarpet buyCarpet = new BuyCarpet();
     System.out.println("How much money do you have?");
     Scanner input = new Scanner(System.in);
     long money = input.nextLong();
-    ArrayList<String> chosenCarpets = buyCarpet.showLargestNumOfCarpet(money);
+    ArrayList<String> chosenCarpets = buyCarpet.showLargestNumOfCarpet(money,carpets);
     System.out.println("These are the carpets that we offer you to buy:");
     System.out.println(chosenCarpets);
     input.close();

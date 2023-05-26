@@ -8,41 +8,47 @@ import java.util.Map;
 import com.mycompany.app.Models.Carpet;
 
 public class BuyCarpet {
-  private Map<Long, String> carpets = new HashMap<>();
-  private ArrayList<Long> prices = new ArrayList<>();
+ // private Map<Long, String> carpets = new HashMap<>();
+ // private ArrayList<Long> prices = new ArrayList<>();
 
-  public ArrayList<String> showLargestNumOfCarpet(long money) throws FileNotFoundException {
-    Map<Long, String> instanceCarpets = carpets;
+
+
+  public ArrayList<String> showLargestNumOfCarpet(long money,ArrayList<Carpet> carpetsArr)  {
+    //Map<Long, String> instanceCarpets = carpets;
     long totalPrice = 0;
     ArrayList<String> chosenCarpets = new ArrayList<>();
     while (totalPrice < money) {
-      if (prices.size() == 0)
+      if (carpetsArr.size() == 0)
         break;
-      Long minPrice = min(prices);
+      Long minPrice = min(carpetsArr);
       if (minPrice + totalPrice <= money) {
         totalPrice += minPrice;
-        chosenCarpets.add(instanceCarpets.get(minPrice));
-        instanceCarpets.remove(minPrice);
-        prices.remove(minPrice);
+        Carpet carpetWithMinPrice = getCarpet(minPrice,carpetsArr);
+        chosenCarpets.add(carpetWithMinPrice.name);
+        carpetsArr.remove(carpetWithMinPrice);
+
       } else
         break;
     }
     return chosenCarpets;
   }
 
-  BuyCarpet(ArrayList<Carpet> carpetsArr) {
-    carpetsArr.forEach(carpet -> {
-      carpets.put(Long.valueOf(carpet.price), carpet.name);
-      prices.add(Long.valueOf(carpet.price));
-    });
+  public Carpet getCarpet(Long price, ArrayList<Carpet> carpetsArr){
+    for (int i = 0; i <carpetsArr.size() ; i++) {
+     if (carpetsArr.get(i).price == price){
+       return carpetsArr.get(i);
 
+     }
+    }
+    return null;
   }
 
-  private Long min(ArrayList<Long> prices) {
-   Long answer = prices.get(0);
-    for (int i = 0; i < prices.size(); i++) {
-      if (prices.get(i) < answer)
-        answer = prices.get(i);
+
+  private Long min(ArrayList<Carpet> carpets) {
+   Long answer = Long.valueOf(carpets.get(0).price);
+    for (int i = 0; i < carpets.size(); i++) {
+      if (carpets.get(i).price < answer)
+        answer = Long.valueOf(carpets.get(i).price);
     }
     return answer;
   }
