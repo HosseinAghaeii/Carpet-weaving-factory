@@ -109,7 +109,7 @@ public class App {
   }
 
   /**
-   * part 2 impemation
+   * part 4 impemation
    * for changeing the input you can change similerCarpet.txt in
    * ./../../../../resources/similerCarpet.txt
    * the input must incude carpet name and price and map like below
