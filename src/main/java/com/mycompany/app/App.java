@@ -13,7 +13,9 @@ import com.mycompany.app.Models.Carpet;
 public class App {
 
   static ArrayList<Carpet> carpets = new ArrayList<>();
-
+  /*
+   * calling all function(all parts of code)
+   * */
   public static void main(String[] args) throws FileNotFoundException, URISyntaxException {
     getCarpets();
     System.out.println("geting color grath");
@@ -26,6 +28,13 @@ public class App {
     buyCarpet();
   }
 
+  /*
+   * this method get all carpets stored in carpets.txt in
+   * ./../../../../resources/carpets.txt
+   * inter you input like this
+   * NAME PRICE ROW COL
+   * [MATRIX]
+   */
   static void getCarpets() {
     Scanner scr = new Scanner(App.class.getClassLoader().getResourceAsStream("carpets.txt"));
     while (scr.hasNextLine()) {
@@ -62,6 +71,18 @@ public class App {
     input.close();
   }
 
+  /*
+   * part 2 impemation
+   * for changeing the input you can change findPath.txt in
+   * ./../../../../resources/findPath.txt
+   * the input must incude size of all intersection and the the length of each
+   * street of it like below
+   * SIZE
+   * [MATRIX]
+   * change the function params for changeing the path that you want to find
+   * @param startVertex the start point
+   * @param endVertex the end point
+   */
   public static void getPath(int startVertex, int endVertex) {
     Scanner input = new Scanner(App.class.getClassLoader().getResourceAsStream("findPath.txt"));
     findPath findPath = new findPath();
@@ -85,6 +106,18 @@ public class App {
 
     input.close();
   }
+
+  /*
+   * part 2 impemation
+   * for changeing the input you can change similerCarpet.txt in
+   * ./../../../../resources/similerCarpet.txt
+   * the input must incude carpet name and price and map like below
+   * NAME PRICE ROW COL
+   * [MATRIX]
+   * this input will be comapre to the rest of carptes that added in getCarpets
+   * method
+   *
+   */
 
   public static void getSimilerCarpets() {
     Scanner scr = new Scanner(App.class.getClassLoader().getResourceAsStream("similerCarpet.txt"));
