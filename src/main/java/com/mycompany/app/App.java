@@ -84,7 +84,12 @@ public class App {
    * change the function params for changeing the path that you want to find
    * 
    * @param startVertex the start point
-   * @param endVertex the end point
+   * @param endVertex   the end point
+   *
+   *
+   * output with this file and 
+   * start = 3 and end = 1
+   * 3 -> 0 -> 1 -> END
    */
   public static void getPath(int startVertex, int endVertex) {
     Scanner input = new Scanner(App.class.getClassLoader().getResourceAsStream("findPath.txt"));
@@ -117,7 +122,12 @@ public class App {
    * [MATRIX]
    * this input will be comapre to the rest of carptes that added in getCarpets
    * method
-   *
+   * OUTPUT with this file is
+   * machine-carpet5
+   * machine-carpet4
+   * machine-carpet3
+   * machine-carpet2
+   * machine-carpet1
    */
 
   public static void getSimilerCarpets() {
@@ -147,12 +157,12 @@ public class App {
 
   }
 
-  public static void buyCarpet()  {
+  public static void buyCarpet() {
     BuyCarpet buyCarpet = new BuyCarpet();
     System.out.println("How much money do you have?");
     Scanner input = new Scanner(System.in);
     long money = input.nextLong();
-    ArrayList<String> chosenCarpets = buyCarpet.showLargestNumOfCarpet(money,carpets);
+    ArrayList<String> chosenCarpets = buyCarpet.showLargestNumOfCarpet(money, carpets);
     System.out.println("These are the carpets that we offer you to buy:");
     System.out.println(chosenCarpets);
     input.close();
