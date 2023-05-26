@@ -13,7 +13,7 @@ public class App {
 
   static ArrayList<Carpet> carpets = new ArrayList<>();
 
-  /*
+  /**
    * calling all function(all parts of code)
    */
   public static void main(String[] args) throws FileNotFoundException, URISyntaxException {
@@ -28,7 +28,7 @@ public class App {
     buyCarpet();
   }
 
-  /*
+  /**
    * this method get all carpets stored in carpets.txt in
    * ./../../../../resources/carpets.txt
    * inter you input like this
@@ -71,7 +71,7 @@ public class App {
     input.close();
   }
 
-  /*
+  /**
    * part 2 impemation
    * for changeing the input you can change findPath.txt in
    * ./../../../../resources/findPath.txt
@@ -84,7 +84,6 @@ public class App {
    * change the function params for changeing the path that you want to find
    * 
    * @param startVertex the start point
-   * 
    * @param endVertex the end point
    */
   public static void getPath(int startVertex, int endVertex) {
@@ -109,7 +108,7 @@ public class App {
     input.close();
   }
 
-  /*
+  /**
    * part 2 impemation
    * for changeing the input you can change similerCarpet.txt in
    * ./../../../../resources/similerCarpet.txt
