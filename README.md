@@ -116,9 +116,6 @@ FindPath(int V, int[][] graph) {
     for (int k = 0; k < V; k++) {
       for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
-
-          // We cannot travel through
-          // edge that doesn't exist
           if (dis[i][k] == INF ||
               dis[k][j] == INF)
             continue;
@@ -132,36 +129,25 @@ FindPath(int V, int[][] graph) {
         }
       }
     }
-  } 
+  } k
 ```
 
-و متد printPath برای پرینت فاصله بین دو نقطه است که در ان با فراخونی متد constructPath مسیر مورد نظر را پیدا و در یک لیست قرار می دهیم تا در ادامه بتوانیم ان مسیر ها را چاپ کنیم
-
+و متد printPath برای پرینت فاصله بین دو نقطه است که در با یم حلقه که چک می کنند مه ایا به نقطه مورد نظر رسیده است یا خیر و در همین حین خانه هایی که رد کرده را چاپ می کند
 ```
- private Vector<Integer> constructPath(int u,   int v) {
-
+  void printPath(int u,
+      int v) {
     if (Next[u][v] == -1)
-      return null;
+      return;
 
-    Vector<Integer> path = new Vector<Integer>();
-    path.add(u);
+    System.out.print(u + " -> ");
 
     while (u != v) {
       u = Next[u][v];
-      path.add(u);
+      System.out.print(u + " -> ");
     }
-    return path;
+    System.out.println("END");
   }
 
-
-  void printPath(int u,
-      int v) {
-    Vector<Integer> path = constructPath(u, v);
-    int n = path.size();
-    for (int i = 0; i < n - 1; i++)
-      System.out.print(path.get(i) + " -> ");
-    System.out.print(path.get(n - 1) + "\n");
-  }
 ```
 
 ***مرتبه این الگوریتم از O($n^3$) است***

@@ -1,7 +1,5 @@
 package com.mycompany.app;
 
-import java.util.*;
-
 public class FindPath {
 
   static final int MAXN = 100;
@@ -24,26 +22,6 @@ public class FindPath {
       }
     }
     floyd(V);
-  }
-
-  private Vector<Integer> constructPath(int u,
-      int v) {
-
-    // If there's no path between
-    // node u and v, simply return
-    // an empty array
-    if (Next[u][v] == -1)
-      return null;
-
-    // Storing the path in a vector
-    Vector<Integer> path = new Vector<Integer>();
-    path.add(u);
-
-    while (u != v) {
-      u = Next[u][v];
-      path.add(u);
-    }
-    return path;
   }
 
   private void floyd(int V) {
@@ -70,11 +48,16 @@ public class FindPath {
 
   void printPath(int u,
       int v) {
-    Vector<Integer> path = constructPath(u, v);
-    int n = path.size();
-    for (int i = 0; i < n - 1; i++)
-      System.out.print(path.get(i) + " -> ");
-    System.out.print(path.get(n - 1) + "\n");
+    if (Next[u][v] == -1)
+      return;
+
+    System.out.print(u + " -> ");
+
+    while (u != v) {
+      u = Next[u][v];
+      System.out.print(u + " -> ");
+    }
+    System.out.println("END");
   }
 
 }
