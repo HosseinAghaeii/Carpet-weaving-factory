@@ -54,6 +54,20 @@ public class App {
 
   }
 
+  /**
+   * this method get all data from graphColor
+   * * ./../../../../resources/graphColor.txt
+   * SIZE
+   * VERTEX1 VERTEX2
+   *
+   *
+   * output with this file is
+   * Vertex 0 ---> Color 0
+   * Vertex 1 ---> Color 1
+   * Vertex 2 ---> Color 2
+   * Vertex 3 ---> Color 0
+   * Vertex 4 ---> Color 1
+   */
   public static void getGraphColor() {
     Scanner input = new Scanner(App.class.getClassLoader().getResourceAsStream("graphColor.txt"));
     Integer size = input.nextInt();
@@ -87,9 +101,9 @@ public class App {
    * @param endVertex   the end point
    *
    *
-   * output with this file and 
-   * start = 3 and end = 1
-   * 3 -> 0 -> 1 -> END
+   *                    output with this file and
+   *                    start = 3 and end = 1
+   *                    3 -> 0 -> 1 -> END
    */
   public static void getPath(int startVertex, int endVertex) {
     Scanner input = new Scanner(App.class.getClassLoader().getResourceAsStream("findPath.txt"));
